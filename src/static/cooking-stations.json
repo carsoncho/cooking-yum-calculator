@@ -1,0 +1,32 @@
+[
+  {
+    "_id": 1,
+    "name": "Campfire",
+    "bonus": 0
+  },
+  {
+    "_id": 2,
+    "name": "Small Kitchen",
+    "bonus": 1
+  },
+  {
+    "_id": 3,
+    "name": "Medium Kitchen",
+    "bonus": 2
+  },
+  {
+    "_id": 4,
+    "name": "Ship's Galley",
+    "bonus": 2
+  },
+  {
+    "_id": 5,
+    "name": "Restaurant Kitchen",
+    "bonus": 4
+  },
+  {
+    "_id": 6,
+    "name": "Palace, Castle, Noble's Kitchen",
+    "bonus": 5
+  }
+]

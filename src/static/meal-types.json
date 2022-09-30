@@ -1,0 +1,27 @@
+[
+  {
+    "_id": 1,
+    "name": "Baked",
+    "preservation": -2
+  },
+  {
+    "_id": 2,
+    "name": "Dried",
+    "preservation": 3
+  },
+  {
+    "_id": 3,
+    "name": "Fried",
+    "preservation": 1
+  },
+  {
+    "_id": 4,
+    "name": "Grilled",
+    "preservation": 0
+  },
+  {
+    "_id": 5,
+    "name": "Stewed",
+    "preservation": -1
+  }
+]

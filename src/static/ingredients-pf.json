@@ -1,0 +1,81 @@
+[
+  {
+    "type": "Protein",
+
+    "ingredients": [
+      {
+        "name": "Annelid",
+        "attributes": {
+          "str": false,
+          "dex": false,
+          "con": true,
+          "int": true,
+          "wis": false,
+          "chr": false,
+          "hp": false,
+          "sp": false,
+          "fort": false,
+          "ref": false,
+          "will": false,
+          "rp": false
+        }
+      },
+      {
+        "name": "Mollusk",
+        "attributes": {
+          "str": false,
+          "dex": true,
+          "con": false,
+          "int": false,
+          "wis": true,
+          "chr": false,
+          "hp": false,
+          "sp": false,
+          "fort": false,
+          "ref": false,
+          "will": false,
+          "rp": false
+        }
+      }
+    ]
+  },
+  {
+    "type": "Vegetal",
+    "ingredients": [
+      {
+        "name": "Leafy",
+        "attributes": {
+          "str": false,
+          "dex": false,
+          "con": false,
+          "int": false,
+          "wis": false,
+          "chr": false,
+          "hp": false,
+          "sp": true,
+          "fort": false,
+          "ref": true,
+          "will": false,
+          "rp": false
+        }
+      },
+      {
+        "name": "Fruit",
+        "attributes": {
+          "str": false,
+          "dex": false,
+          "con": false,
+          "int": false,
+          "wis": false,
+          "chr": false,
+          "hp": true,
+          "sp": false,
+          "fort": false,
+          "ref": false,
+          "will": true,
+          "rp": false
+        }
+      }
+    ]
+  }
+]

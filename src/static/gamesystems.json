@@ -1,0 +1,109 @@
+[
+  {
+    "_id": "dnd5e",
+    "name": "Dungeons & Dragson 5e",
+    "skills": [
+      {
+        "_id": "cooking",
+        "name": "Cooking",
+        "value": 0
+      },
+      {
+        "_id": "nature",
+        "name": "Nature",
+        "value": 0
+      },
+      {
+        "_id": "survival",
+        "name": "Survival",
+        "value": 0
+      },
+      {
+        "_id": "cooking_utensils",
+        "name": "Cooking Utensils",
+        "value": 0
+      },
+      {
+        "_id": "cooking_utensils",
+        "name": "Cooking Utensils",
+        "value": 0
+      },
+      { "_id": "performance", "name": "Performance", "value": 0 },
+      { "_id": "performance", "name": "Performance", "value": 0 }
+    ]
+  },
+  {
+    "_id": "pf",
+    "name": "Pathfinder/Dark Suns",
+    "skills": [
+      {
+        "_id": "cooking",
+        "name": "Cooking",
+        "value": 0
+      },
+      {
+        "_id": "knowledge_nature",
+        "name": "Knowledge (Nature)",
+        "value": 0
+      },
+      {
+        "_id": "survival",
+        "name": "Survival",
+        "value": 0
+      },
+      {
+        "_id": "knowledge_engineering",
+        "name": "Knowledge (Engineering)",
+        "value": 0
+      },
+      {
+        "_id": "acrobatics",
+        "name": "Acrobatics",
+        "value": 0
+      },
+      { "_id": "spellcraft", "name": "Spellcraft", "value": 0 },
+      {
+        "_id": "sleight_of_hand",
+        "name": "Sleight of Hand",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "_id": "sf",
+    "name": "Starfinder",
+    "skills": [
+      {
+        "_id": "cooking",
+        "name": "Cooking",
+        "value": 0
+      },
+      {
+        "_id": "life_science",
+        "name": "Life Science",
+        "value": 0
+      },
+      {
+        "_id": "survival",
+        "name": "Survival",
+        "value": 0
+      },
+      { "_id": "physical_science", "name": "Physical Science", "value": 0 },
+      {
+        "_id": "athletics",
+        "name": "Athletics",
+        "value": 0
+      },
+      {
+        "_id": "sleight_of_hand",
+        "name": "Sleight of Hand",
+        "value": 0
+      },
+      {
+        "_id": "mysticism",
+        "name": "Mysticism",
+        "value": 0
+      }
+    ]
+  }
+]

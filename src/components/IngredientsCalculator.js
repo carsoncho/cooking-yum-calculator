@@ -3,11 +3,14 @@ import gameSystemData from "../static/gamesystems.json";
 import mealTypeData from "../static/meal-types.json";
 import cookingStationData from "../static/cooking-stations.json";
 import GameSystemSelect from "./GameSystem";
-import CharacterSkillsInput from "./CharacterSkillsInput";
-import { element } from "prop-types";
+import CharacterSkillsForm from "./CharacterSkillsForm";
 import MealTypeSelect from "./MealTypeSelect";
 import CookingStationSelect from "./CookingStationSelect";
 import IngredientsList from "./IngredientsList";
+import ReviewInfo from "./ReviewInfo";
+import ingredientsPf from "../static/ingredients-pf.json";
+import RollInputsForm from "./RollInputsForm";
+import Totals from "./Totals";
 
 export default function IngredientsCalculator() {
   const [step, setStep] = useState(1);
@@ -16,6 +19,23 @@ export default function IngredientsCalculator() {
   const [selectedMealType, setMealType] = useState("");
   const [selectedCookingStation, setCookingStation] = useState("");
   const [currentIngredients, setCurrentIngredients] = useState([{}]);
+  const [rollInputs, setRollInputs] = useState([{}]);
+
+  // @TODO: Do something with.
+  const attributeMap = {
+    str: "Strength",
+    dex: "Dexterity",
+    con: "Consitution",
+    int: "Intelligence",
+    wis: "Wisdom",
+    chr: "Charisma",
+    hp: "Health Points",
+    sp: "Stamina Points",
+    fort: "Fortitude",
+    ref: "Reflex",
+    will: "Will",
+    rp: "Resolve Points",
+  };
 
   /**
    * Increment to next 'step'.
@@ -54,7 +74,7 @@ export default function IngredientsCalculator() {
    *   The skill ID.
    */
   function handleCurentSkillsInput(event, skill) {
-    setCurrentSkills({ ...currentSkills, [skill]: event.target.value });
+    setCurrentSkills({ ...currentSkills, [skill]: Number(event.target.value) });
   }
 
   /**
@@ -126,10 +146,28 @@ export default function IngredientsCalculator() {
     setCurrentIngredients(filtered);
   }
 
+  function handleRollInput(event, rollType) {
+    setRollInputs({ ...rollInputs, [rollType]: Number(event.target.value) });
+  }
+
   /**
-   * Returns the selected game system by ID.
+   * Returns a game system by ID.
    *
-   * @param string systemId
+   * @param {string} systemId
+   *   The ID of the system to find.
+   * @returns
+   *   The found game system
+   */
+  function getGameSystem(systemId) {
+    return gameSystemData.find((element) => {
+      return element._id === systemId;
+    });
+  }
+
+  /**
+   * Returns the selected game system's skills by ID.
+   *
+   * @param {string} systemId
    *   The game system ID to retrieve.
    * @returns array
    *   The array of skill objects.
@@ -139,6 +177,76 @@ export default function IngredientsCalculator() {
       return element._id === systemId;
     });
     return gs.skills;
+  }
+
+  /**
+   *
+   * @param {string} systemId
+   * @returns
+   */
+  function getIngredientsData(systemId) {
+    let ingredientsData = [];
+    switch (systemId) {
+      case "dnd5e":
+        console.alert("Add DND5e data!");
+        break;
+      case "pf":
+      case "sf":
+        ingredientsData = ingredientsPf;
+        break;
+    }
+
+    return ingredientsData;
+  }
+
+  /**
+   * Returns a Ingredient object by name.
+   *
+   * @TODO: Refactor this and where it's used to not require systemId since it should be retrievable in state.
+   *
+   * @param {string} systemId
+   *   The gamesystem ID.
+   * @param {string} ingredientName
+   * @returns
+   */
+  function getIngredientByName(systemId, ingredientName) {
+    const ingredientsData = getIngredientsData(systemId);
+    let ingredientsList = [];
+
+    ingredientsData.map((group) => {
+      group.ingredients.map((ingredient) => {
+        ingredientsList.push(ingredient);
+      });
+    });
+
+    return ingredientsList.find((ingredient) => {
+      return ingredient.name === ingredientName;
+    });
+  }
+
+  /**
+   * Gets available attributes from Ingredient Object
+   *
+   * @param {Object} ingredient
+   *
+   * @returns
+   *   The attributes that are true.
+   */
+  function getIngredientAttributes(ingredient) {
+    let attributes = ingredient.attributes;
+    return Object.keys(attributes).filter((element, key) => {
+      return attributes[element] === true;
+    });
+  }
+
+  /**
+   *
+   * @param {*} ingredient
+   * @returns
+   */
+  function formatIngredientAttributes(ingredient) {
+    let attributes = getIngredientAttributes(ingredient);
+    return `${attributes[0]} + ${attributes[1]}`;
   }
 
   /**
@@ -173,14 +281,16 @@ export default function IngredientsCalculator() {
    * @param {*} id
    *   The ID to lookup against the data.
    * @param {Array} data
-   *   The array of data to search against. NOTE: each element must include an 'id' property.
+   *   The array of data to search against. NOTE: each element must include an '_id' property.
    * @returns
    *   The found element from the array.
    */
   function findElement(id, data) {
-    return data.find((element) => {
-      return element.id === id;
+    let found = data.find((element) => {
+      return element._id == id;
     });
+
+    return found;
   }
 
   /**
@@ -224,36 +334,115 @@ export default function IngredientsCalculator() {
     return !!selectedMealType;
   }
 
-  return (
-    <div className="ingredients-calculator">
-      <GameSystemSelect handleSystemSelection={handleSystemSelection} />
-
-      {isGameSystemSelected() === true &&
-        getGameSystemSkills(systemSelection).map((element, index) => {
-          return (
-            <CharacterSkillsInput
-              key={index}
-              {...element}
+  /**
+   *
+   * @returns
+   */
+  function determineComponentByStep() {
+    switch (step) {
+      case 1:
+        return (
+          <GameSystemSelect
+            nextStep={nextStep}
+            systemSelection={systemSelection}
+            handleSystemSelection={handleSystemSelection}
+          />
+        );
+        break;
+      case 2:
+        return (
+          isGameSystemSelected() && (
+            <CharacterSkillsForm
+              nextStep={nextStep}
+              prevStep={prevStep}
+              gameSystemSkills={getGameSystemSkills(systemSelection)}
               handleCurentSkillsInput={handleCurentSkillsInput}
             />
-          );
-        })}
+          )
+        );
+        break;
+      case 3:
+        return (
+          <MealTypeSelect
+            nextStep={nextStep}
+            prevStep={prevStep}
+            handleSetMealTypeSelection={handleSetMealTypeSelection}
+          />
+        );
+        break;
+      case 4:
+        return (
+          <CookingStationSelect
+            nextStep={nextStep}
+            prevStep={prevStep}
+            handleCookingStationSelection={handleCookingStationSelection}
+          />
+        );
+        break;
+      case 5:
+        return (
+          <IngredientsList
+            nextStep={nextStep}
+            prevStep={prevStep}
+            maxCount="3"
+            gameSystem={systemSelection}
+            getIngredientAttributes={getIngredientAttributes}
+            formatIngredientAttributes={formatIngredientAttributes}
+            ingredients={currentIngredients}
+            handleIngredientSelection={handleIngredientSelection}
+            handleAddIngredient={addIngredient}
+            handleRemoveIngredient={removeIngredient}
+          />
+        );
+        break;
+      case 6:
+        return (
+          <ReviewInfo
+            nextStep={nextStep}
+            prevStep={prevStep}
+            attributeMap={attributeMap}
+            gameSystem={getGameSystem(systemSelection)}
+            currentSkills={currentSkills}
+            mealType={selectedMealType}
+            getMealType={getMealType}
+            cookingStation={selectedCookingStation}
+            getCookingStation={getCookingStation}
+            currentIngredients={currentIngredients}
+            getIngredientByName={getIngredientByName}
+            getIngredientAttributes={getIngredientAttributes}
+            formatIngredientAttributes={formatIngredientAttributes}
+          />
+        );
+        break;
+      case 7:
+        return (
+          <RollInputsForm
+            nextStep={nextStep}
+            prevStep={prevStep}
+            handleRollInput={handleRollInput}
+          />
+        );
+        break;
+      case 8:
+        return (
+          <Totals
+            skills={currentSkills}
+            rolls={rollInputs}
+            attributeMap={attributeMap}
+            determineBonus={determineBonus}
+            currentIngredients={currentIngredients}
+            getIngredientByName={getIngredientByName}
+            getIngredientAttributes={getIngredientAttributes}
+            formatIngredientAttributes={formatIngredientAttributes}
+          />
+        );
+        break;
+      default:
+        break;
+    }
+  }
 
-      <MealTypeSelect handleSetMealTypeSelection={handleSetMealTypeSelection} />
-      <CookingStationSelect
-        handleCookingStationSelection={handleCookingStationSelection}
-      />
-      {isGameSystemSelected() === true && (
-        <IngredientsList
-          maxCount="3"
-          gameSystem={systemSelection}
-          ingredients={currentIngredients}
-          handleIngredientSelection={handleIngredientSelection}
-          handleAddIngredient={addIngredient}
-          handleRemoveIngredient={removeIngredient}
-        />
-      )}
-      <p>{JSON.stringify(currentIngredients)}</p>
-    </div>
+  return (
+    <div className="ingredients-calculator">{determineComponentByStep()}</div>
   );
 }

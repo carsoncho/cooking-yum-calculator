@@ -1,3 +1,4 @@
+import { select } from "async";
 import React, { useEffect } from "react";
 import { useState } from "react";
 import ingredientsPf from "../static/ingredients-pf.json";
@@ -28,38 +29,35 @@ export default function IngredientSelect(props) {
     }
   }
 
-  /**
-   *
-   * @param {*} ingredient
-   * @returns
-   */
-  function getIngredientAttributes(ingredient) {
-    let attributes = ingredient.attributes;
-    let filtered = Object.keys(attributes).filter((element, key) => {
-      return attributes[element] === true;
-    });
-
-    return `${filtered[0]} + ${filtered[1]}`;
-  }
+  const selectId = "ingredient-" + props.index;
 
   return (
     <div>
+      {props.errors[selectId] && <span>You must select an ingredient.</span>}
       <label>Ingredient</label>
       <select
-        onChange={(event) => {
-          props.handleIngredientSelection(event, props.index);
-        }}
+        id={selectId}
+        className="ingredient-select"
+        {...props.register(selectId, {
+          required: true,
+          onChange: (event) => {
+            props.handleIngredientSelection(event, props.index);
+          },
+        })}
       >
+        <option value="">- Select -</option>
         {ingredientsList.map((group, index) => (
           <optgroup key={index} label={group.type}>
             {group.ingredients.map((ingredient, key) => (
               <option key={key} value={ingredient.name}>
-                {ingredient.name} ({getIngredientAttributes(ingredient)})
+                {ingredient.name} (
+                {props.formatIngredientAttributes(ingredient)})
               </option>
             ))}
           </optgroup>
         ))}
       </select>
+      {/* Only show remove for buttons other than the first one */}
       {props.index > 0 && (
         <button
           onClick={() => {

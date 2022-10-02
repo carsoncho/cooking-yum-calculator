@@ -188,11 +188,13 @@ export default function IngredientsCalculator() {
     let ingredientsData = [];
     switch (systemId) {
       case "dnd5e":
-        console.alert("Add DND5e data!");
+        console.log("Add DND5e data!");
         break;
       case "pf":
       case "sf":
         ingredientsData = ingredientsPf;
+        break;
+      default:
         break;
     }
 
@@ -213,8 +215,8 @@ export default function IngredientsCalculator() {
     const ingredientsData = getIngredientsData(systemId);
     let ingredientsList = [];
 
-    ingredientsData.map((group) => {
-      group.ingredients.map((ingredient) => {
+    ingredientsData.forEach((group) => {
+      group.ingredients.forEach((ingredient) => {
         ingredientsList.push(ingredient);
       });
     });
@@ -287,7 +289,7 @@ export default function IngredientsCalculator() {
    */
   function findElement(id, data) {
     let found = data.find((element) => {
-      return element._id == id;
+      return element._id === id;
     });
 
     return found;
@@ -325,16 +327,6 @@ export default function IngredientsCalculator() {
   }
 
   /**
-   * Boolean method to check if meal type has been set.
-   *
-   * @returns boolean
-   *   True if meal type has been selected, false otherwise.
-   */
-  function isMealTypeSelected() {
-    return !!selectedMealType;
-  }
-
-  /**
    *
    * @returns
    */
@@ -348,7 +340,6 @@ export default function IngredientsCalculator() {
             handleSystemSelection={handleSystemSelection}
           />
         );
-        break;
       case 2:
         return (
           isGameSystemSelected() && (
@@ -360,7 +351,6 @@ export default function IngredientsCalculator() {
             />
           )
         );
-        break;
       case 3:
         return (
           <MealTypeSelect
@@ -369,7 +359,6 @@ export default function IngredientsCalculator() {
             handleSetMealTypeSelection={handleSetMealTypeSelection}
           />
         );
-        break;
       case 4:
         return (
           <CookingStationSelect
@@ -378,7 +367,6 @@ export default function IngredientsCalculator() {
             handleCookingStationSelection={handleCookingStationSelection}
           />
         );
-        break;
       case 5:
         return (
           <IngredientsList
@@ -394,7 +382,6 @@ export default function IngredientsCalculator() {
             handleRemoveIngredient={removeIngredient}
           />
         );
-        break;
       case 6:
         return (
           <ReviewInfo
@@ -413,7 +400,6 @@ export default function IngredientsCalculator() {
             formatIngredientAttributes={formatIngredientAttributes}
           />
         );
-        break;
       case 7:
         return (
           <RollInputsForm
@@ -422,7 +408,6 @@ export default function IngredientsCalculator() {
             handleRollInput={handleRollInput}
           />
         );
-        break;
       case 8:
         return (
           <Totals
@@ -436,7 +421,6 @@ export default function IngredientsCalculator() {
             formatIngredientAttributes={formatIngredientAttributes}
           />
         );
-        break;
       default:
         break;
     }

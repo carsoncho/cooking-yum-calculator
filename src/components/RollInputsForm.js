@@ -22,6 +22,7 @@ export default function RollInputsForm(props) {
       </p>
       <button onClick={() => props.prevStep()}>Prev</button>
       <div className="roll-group">
+        {errors.preparation && <span>You must enter a value.</span>}
         <label>Preparation</label>
         <input
           type="text"
@@ -35,6 +36,7 @@ export default function RollInputsForm(props) {
         />
       </div>
       <div className="roll-group">
+        {errors.coooking && <span>You must enter a value.</span>}
         <label>Cooking</label>
         <input
           type="text"
@@ -48,6 +50,7 @@ export default function RollInputsForm(props) {
         />
       </div>
       <div className="roll-group">
+        {errors.presentation && <span>You must enter a value.</span>}
         <label>Presentation</label>
         <input
           type="text"

@@ -1,4 +1,3 @@
-import { select } from "async";
 import React, { useEffect } from "react";
 import { useState } from "react";
 import ingredientsPf from "../static/ingredients-pf.json";
@@ -8,7 +7,7 @@ export default function IngredientSelect(props) {
 
   useEffect(() => {
     selectIngredientsFromGameSystem(props.gameSystem);
-  }, [ingredientsList]);
+  }, [ingredientsList, props.gameSystem]);
 
   /**
    *

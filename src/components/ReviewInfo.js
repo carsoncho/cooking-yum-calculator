@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 export default function ReviewInfo(props) {
   let {
@@ -13,13 +13,6 @@ export default function ReviewInfo(props) {
 
   let currentSkillsKeys = Object.keys(currentSkills);
   let currentSkillValues = Object.values(currentSkills);
-
-  //   useEffect(() => {
-  //       effect
-  //       return () => {
-  //           cleanup
-  //       }
-  //   }, [])
 
   /**
    *

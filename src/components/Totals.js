@@ -57,7 +57,7 @@ export default function Totals(props) {
    */
   function getMealAttributes(ingredientNames) {
     let mealAttributes = [];
-    ingredientNames.map((name) => {
+    ingredientNames.forEach((name) => {
       let ingredient = props.getIngredientByName("sf", name);
       let attributes = props.getIngredientAttributes(ingredient);
       mealAttributes = [...attributes, ...mealAttributes];

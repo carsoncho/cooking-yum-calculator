@@ -1,10 +1,11 @@
-import "./App.css";
-import IngredientsCalculator from "./components/IngredientsCalculator";
+import './App.css';
+import IngredientsCalculator from './components/IngredientsCalculator';
+import KitchensOpenHeader from './components/KitchensOpenHeader';
 
 function App() {
   return (
-    <div className="App">
-      <header></header>
+    <div className='App'>
+      <KitchensOpenHeader />
       <IngredientsCalculator />
     </div>
   );

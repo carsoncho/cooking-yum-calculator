@@ -22,13 +22,13 @@ export default function GameSystem(props) {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form className='form-container' onSubmit={handleSubmit(onSubmit)}>
       <span className='form-title-translated'>ゲームシステム</span>{' '}
       <h2 className='form-title'>GAME SYSTEM</h2>
-      <hr></hr>
+      <hr className='form-underline'></hr>
       <div className='form-content'>
         {errors.gameSystemSelect && <span>You must select a game system.</span>}
-        <label htmlFor='game-system-selection'>Select the game system</label>
+        <label htmlFor='game-system-selection'>Select the game system: </label>
         <select
           name='game-system-selection'
           className='game-system'

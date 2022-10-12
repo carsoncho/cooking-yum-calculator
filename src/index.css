@@ -27,9 +27,28 @@ code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
-h2.form-title {
+.form-container {
     font-family: 'Gemunu-Libre';
+}
+
+h2.form-title {
     letter-spacing: 2px;
     font-size: 28px;
     margin-top: 0.5rem;
+}
+
+hr.form-underline {
+    max-width: 75%;
+    box-shadow: 0px 1px 4px 2px #ff00e6;
+    background-color: #fa6eec;
+    border-color: #fa6eec;
+    height: 2px;
+}
+
+div.form-content {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 25%;
 }

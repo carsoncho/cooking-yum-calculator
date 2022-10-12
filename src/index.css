@@ -49,6 +49,13 @@ div.form-content {
     margin-top: 2rem;
     display: flex;
     justify-content: center;
-    flex-direction: column;
-    max-width: 25%;
+}
+
+.form-label {
+    font-size: 20px;
+}
+
+.game-system,
+.submit-form-button {
+    margin-left: 5px;
 }

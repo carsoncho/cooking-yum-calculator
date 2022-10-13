@@ -27,7 +27,6 @@ export default function GameSystem(props) {
       <h2 className='form-title'>GAME SYSTEM</h2>
       <hr className='form-underline'></hr>
       <div className='form-content'>
-        {errors.gameSystemSelect && <span>You must select a game system.</span>}
         <label className='form-label' htmlFor='game-system-selection'>
           Select the game system:{' '}
         </label>
@@ -49,6 +48,12 @@ export default function GameSystem(props) {
         </select>
         <input className='submit-form-button' type='submit' value='Next' />
       </div>
+      {errors.gameSystemSelect && (
+        <div className='error-container'>
+          {' '}
+          <p className='form-error'>You must select a game system.</p>
+        </div>
+      )}
     </form>
   );
 }

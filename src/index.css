@@ -59,3 +59,45 @@ div.form-content {
 .submit-form-button {
     margin-left: 5px;
 }
+
+.error-container {
+    display: inline-block;
+    margin: 2rem;
+}
+
+.form-error {
+    font-size: 16px;
+    overflow: hidden;
+    width: 0;
+    display: inline-block;
+    border-right: 0.15em solid #ff00e6;
+    white-space: nowrap;
+    margin: 0 auto;
+    letter-spacing: 0.12em;
+    animation: typing 2.5s forwards steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+
+/* The typing effect */
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+
+/* The typewriter cursor effect */
+
+@keyframes blink-caret {
+    from,
+    to {
+        border-color: transparent;
+    }
+    50% {
+        border-color: #ff00e6;
+    }
+}

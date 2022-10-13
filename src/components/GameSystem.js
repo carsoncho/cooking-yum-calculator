@@ -1,6 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import GameSystemsData from '../static/gamesystems.json';
+import FormTitle from './shared/FormTitle';
 
 export default function GameSystem(props) {
   const {
@@ -23,9 +24,7 @@ export default function GameSystem(props) {
 
   return (
     <form className='form-container' onSubmit={handleSubmit(onSubmit)}>
-      <span className='form-title-translated'>ゲームシステム</span>{' '}
-      <h2 className='form-title'>GAME SYSTEM</h2>
-      <hr className='form-underline'></hr>
+      <FormTitle translation='ゲームシステム' title='GAME SYSTEM' />
       <div className='form-content'>
         <label className='form-label' htmlFor='game-system-selection'>
           Select the game system:{' '}

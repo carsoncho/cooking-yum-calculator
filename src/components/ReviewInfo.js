@@ -1,4 +1,5 @@
-import React from "react";
+import React from 'react';
+import FormTitle from './shared/FormTitle';
 
 export default function ReviewInfo(props) {
   let {
@@ -27,8 +28,8 @@ export default function ReviewInfo(props) {
   }
 
   return (
-    <form>
-      <h2>Review</h2>
+    <form className='form-container'>
+      <FormTitle title='REVIEW' translation='レビュー' />
       <button onClick={() => props.prevStep()}>Prev</button>
       <p>
         <strong>Game System</strong>: {gameSystem.name}
@@ -49,7 +50,7 @@ export default function ReviewInfo(props) {
         <strong>Meal type</strong>: {getMealType(mealType).name}
       </p>
       <p>
-        <strong>Cooking station</strong>:{" "}
+        <strong>Cooking station</strong>:{' '}
         {getCookingStation(cookingStation).name}
       </p>
       <p>

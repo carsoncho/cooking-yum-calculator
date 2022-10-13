@@ -1,6 +1,7 @@
-import React from "react";
-import { useForm } from "react-hook-form";
-import CharacterSkillsInput from "./CharacterSkillsInput";
+import React from 'react';
+import { useForm } from 'react-hook-form';
+import CharacterSkillsInput from './CharacterSkillsInput';
+import FormTitle from './shared/FormTitle';
 
 export default function CharacterSkillsForm(props) {
   const {
@@ -14,8 +15,8 @@ export default function CharacterSkillsForm(props) {
   }
 
   return (
-    <form className="character-skills" onSubmit={handleSubmit(onSubmit)}>
-      <h2>Character Skills</h2>
+    <form className='form-container' onSubmit={handleSubmit(onSubmit)}>
+      <FormTitle title='CHARACTER SKILLS' translation='キャラクタースキル' />
       <button onClick={() => props.prevStep()}>Prev</button>
       {props.gameSystemSkills.map((element, index) => {
         return (
@@ -28,7 +29,7 @@ export default function CharacterSkillsForm(props) {
           />
         );
       })}
-      <input type="submit" value="Next" />
+      <input type='submit' value='Next' />
     </form>
   );
 }

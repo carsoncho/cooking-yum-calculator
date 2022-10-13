@@ -1,13 +1,89 @@
+@font-face {
+    font-family: 'Michroma-Regular';
+    src: local('Michroma-Regular'), url('./fonts/Michroma/Michroma-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Clip';
+    src: local('Clip'), url('./fonts/Clip/Clip.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Gemunu-Libre';
+    src: local('Gemunu-Libre'), url('./fonts/Gemunu_Libre/GemunuLibre-VariableFont_wght.ttf') format('truetype');
+}
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: radial-gradient(#5e0b85, #1e012b);
+    height: 100vh;
+    color: white;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+.form-container {
+    font-family: 'Gemunu-Libre';
+}
+
+div.form-content {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.form-label {
+    font-size: 20px;
+}
+
+.game-system,
+.submit-form-button {
+    margin-left: 5px;
+}
+
+.error-container {
+    display: inline-block;
+    margin: 2rem;
+}
+
+.form-error {
+    font-size: 16px;
+    overflow: hidden;
+    width: 0;
+    display: inline-block;
+    border-right: 0.15em solid #ff00e6;
+    white-space: nowrap;
+    margin: 0 auto;
+    letter-spacing: 0.12em;
+    animation: typing 2.5s forwards steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+
+/* The typing effect */
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+
+/* The typewriter cursor effect */
+
+@keyframes blink-caret {
+    from,
+    to {
+        border-color: transparent;
+    }
+    50% {
+        border-color: #ff00e6;
+    }
 }

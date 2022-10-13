@@ -1,40 +1,40 @@
-import React, { useState } from "react";
-import gameSystemData from "../static/gamesystems.json";
-import mealTypeData from "../static/meal-types.json";
-import cookingStationData from "../static/cooking-stations.json";
-import GameSystemSelect from "./GameSystem";
-import CharacterSkillsForm from "./CharacterSkillsForm";
-import MealTypeSelect from "./MealTypeSelect";
-import CookingStationSelect from "./CookingStationSelect";
-import IngredientsList from "./IngredientsList";
-import ReviewInfo from "./ReviewInfo";
-import ingredientsPf from "../static/ingredients-pf.json";
-import RollInputsForm from "./RollInputsForm";
-import Totals from "./Totals";
+import React, { useState } from 'react';
+import gameSystemData from '../static/gamesystems.json';
+import mealTypeData from '../static/meal-types.json';
+import cookingStationData from '../static/cooking-stations.json';
+import GameSystemSelect from './GameSystem';
+import CharacterSkillsForm from './CharacterSkillsForm';
+import MealTypeSelect from './MealTypeSelect';
+import CookingStationSelect from './CookingStationSelect';
+import IngredientsList from './IngredientsList';
+import ReviewInfo from './ReviewInfo';
+import ingredientsPf from '../static/ingredients-pf.json';
+import RollInputsForm from './RollInputsForm';
+import Totals from './Totals';
 
 export default function IngredientsCalculator() {
   const [step, setStep] = useState(1);
-  const [systemSelection, setSystemSelection] = useState("");
+  const [systemSelection, setSystemSelection] = useState('');
   const [currentSkills, setCurrentSkills] = useState({});
-  const [selectedMealType, setMealType] = useState("");
-  const [selectedCookingStation, setCookingStation] = useState("");
+  const [selectedMealType, setMealType] = useState('');
+  const [selectedCookingStation, setCookingStation] = useState('');
   const [currentIngredients, setCurrentIngredients] = useState([{}]);
   const [rollInputs, setRollInputs] = useState([{}]);
 
   // @TODO: Do something with.
   const attributeMap = {
-    str: "Strength",
-    dex: "Dexterity",
-    con: "Consitution",
-    int: "Intelligence",
-    wis: "Wisdom",
-    chr: "Charisma",
-    hp: "Health Points",
-    sp: "Stamina Points",
-    fort: "Fortitude",
-    ref: "Reflex",
-    will: "Will",
-    rp: "Resolve Points",
+    str: 'Strength',
+    dex: 'Dexterity',
+    con: 'Consitution',
+    int: 'Intelligence',
+    wis: 'Wisdom',
+    chr: 'Charisma',
+    hp: 'Health Points',
+    sp: 'Stamina Points',
+    fort: 'Fortitude',
+    ref: 'Reflex',
+    will: 'Will',
+    rp: 'Resolve Points',
   };
 
   /**
@@ -88,7 +88,7 @@ export default function IngredientsCalculator() {
    *   The skill ID.
    */
   function handleSetMealTypeSelection(event) {
-    setMealType(event.target.value);
+    setMealType(Number(event.target.value));
   }
 
   /**
@@ -100,7 +100,7 @@ export default function IngredientsCalculator() {
    *   The skill ID.
    */
   function handleCookingStationSelection(event) {
-    setCookingStation(event.target.value);
+    setCookingStation(Number(event.target.value));
   }
 
   /**
@@ -187,11 +187,11 @@ export default function IngredientsCalculator() {
   function getIngredientsData(systemId) {
     let ingredientsData = [];
     switch (systemId) {
-      case "dnd5e":
-        console.log("Add DND5e data!");
+      case 'dnd5e':
+        console.log('Add DND5e data!');
         break;
-      case "pf":
-      case "sf":
+      case 'pf':
+      case 'sf':
         ingredientsData = ingredientsPf;
         break;
       default:
@@ -372,7 +372,7 @@ export default function IngredientsCalculator() {
           <IngredientsList
             nextStep={nextStep}
             prevStep={prevStep}
-            maxCount="3"
+            maxCount='3'
             gameSystem={systemSelection}
             getIngredientAttributes={getIngredientAttributes}
             formatIngredientAttributes={formatIngredientAttributes}
@@ -427,6 +427,6 @@ export default function IngredientsCalculator() {
   }
 
   return (
-    <div className="ingredients-calculator">{determineComponentByStep()}</div>
+    <div className='ingredients-calculator'>{determineComponentByStep()}</div>
   );
 }

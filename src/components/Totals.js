@@ -1,4 +1,5 @@
-import React from "react";
+import React from 'react';
+import FormTitle from './shared/FormTitle';
 
 export default function Totals(props) {
   let skills = props.skills;
@@ -58,7 +59,7 @@ export default function Totals(props) {
   function getMealAttributes(ingredientNames) {
     let mealAttributes = [];
     ingredientNames.forEach((name) => {
-      let ingredient = props.getIngredientByName("sf", name);
+      let ingredient = props.getIngredientByName('sf', name);
       let attributes = props.getIngredientAttributes(ingredient);
       mealAttributes = [...attributes, ...mealAttributes];
     });
@@ -67,7 +68,7 @@ export default function Totals(props) {
     return mealAttributes;
   }
 
-  getMealAttributes(["Mollusk", "Annelid", "Fruit"]);
+  getMealAttributes(['Mollusk', 'Annelid', 'Fruit']);
 
   /**
    * Determines which skill has the higher rank.
@@ -109,8 +110,8 @@ export default function Totals(props) {
   }
 
   return (
-    <div>
-      <h2>Results</h2>
+    <div className='form-container'>
+      <FormTitle title='RESULTS' translation='結果' />
       {/* TODO: Turn these 3 sections into a "PhaseTotal" component */}
       <h3>Preparation Phase Total: {prepPhaseTotal}</h3>
       <h3>Preparation Phase Bonus: {prepPhaseBonus}</h3>

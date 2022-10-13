@@ -1,6 +1,7 @@
-import React from "react";
-import { useForm } from "react-hook-form";
-import IngredientSelect from "./IngredientSelect";
+import React from 'react';
+import { useForm } from 'react-hook-form';
+import IngredientSelect from './IngredientSelect';
+import FormTitle from './shared/FormTitle';
 
 export default function IngredientsList(props) {
   const {
@@ -17,8 +18,8 @@ export default function IngredientsList(props) {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <h2>Ingredients List</h2>
+    <form className='form-container' onSubmit={handleSubmit(onSubmit)}>
+      <FormTitle title='INGREDIENTS LIST' translation='材料' />
       <p>You may choose up to 3 ingredients to include in this meal.</p>
       <button onClick={() => props.prevStep()}>Prev</button>
       <button
@@ -29,7 +30,7 @@ export default function IngredientsList(props) {
       >
         Add Ingredient
       </button>
-      <ul className="ingredients-list">
+      <ul className='ingredients-list'>
         {ingredients.map((ingredient, index) => (
           <li key={index}>
             {
@@ -47,7 +48,7 @@ export default function IngredientsList(props) {
           </li>
         ))}
       </ul>
-      <input type="submit" value="Next" />
+      <input type='submit' value='Next' />
     </form>
   );
 }

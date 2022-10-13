@@ -27,7 +27,7 @@ export default function GameSystem(props) {
       <FormTitle translation='ゲームシステム' title='GAME SYSTEM' />
       <div className='form-content'>
         <label className='form-label' htmlFor='game-system-selection'>
-          Select the game system:{' '}
+          Select the game system:
         </label>
         <select
           name='game-system-selection'
@@ -49,7 +49,6 @@ export default function GameSystem(props) {
       </div>
       {errors.gameSystemSelect && (
         <div className='error-container'>
-          {' '}
           <p className='form-error'>You must select a game system.</p>
         </div>
       )}

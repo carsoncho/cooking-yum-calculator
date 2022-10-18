@@ -21,17 +21,38 @@ body {
     background: radial-gradient(#5e0b85, #1e012b);
     height: 100vh;
     color: white;
+    font-size: 18px;
 }
 
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
+
+/* todo: stopped here */
+
+
+/* input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+input[type='text'] {
+    border: 2px solid #ff00e6;
+    border-radius: 0.25rem;
+} */
+
 .form-container {
     font-family: 'Gemunu-Libre';
 }
 
-div.form-content {
+.form-content {
     margin-top: 2rem;
     display: flex;
     justify-content: center;
@@ -86,4 +107,20 @@ div.form-content {
     50% {
         border-color: #ff00e6;
     }
+}
+
+
+/* Styles for character skills component */
+
+.skill-input-container {
+    margin: 0.5rem;
+}
+
+.character-skill-input {
+    font-size: 16px;
+}
+
+.character-skill-label {
+    font-size: 20px;
+    margin: 0.5rem;
 }

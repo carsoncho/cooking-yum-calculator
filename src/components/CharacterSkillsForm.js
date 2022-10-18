@@ -29,6 +29,11 @@ export default function CharacterSkillsForm(props) {
           />
         );
       })}
+      {Object.keys(errors).length !== 0 && (
+        <div className='error-container'>
+          <p className='form-error'>All character skills are required.</p>
+        </div>
+      )}
       <input type='submit' value='Next' />
     </form>
   );

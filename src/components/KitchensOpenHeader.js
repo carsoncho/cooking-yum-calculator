@@ -6,9 +6,9 @@ export default function KitchensOpenHeader() {
     <div className='header-container'>
       <div className='title-container'>
         <h1 className='font-face-clip'>
-          <span id='first-word'>KITCHEN</span> O<span id='offset'>P</span>EN
-        </h1>
-      </div>
+          <span id='first-word'> COOKING </span> Y<span id='offset'>U</span>M!
+        </h1>{' '}
+      </div>{' '}
     </div>
   );
 }

@@ -28,25 +28,18 @@ code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
-
-/* todo: stopped here */
-
-
-/* input {
+select,
+input,
+button {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    background-color: transparent;
-    border: none;
-    padding: 0;
-    margin: 0;
+    background-color: #1e012b;
+    color: white;
     box-sizing: border-box;
+    font-family: 'Gemunu-Libre';
+    font-size: 16px;
 }
-
-input[type='text'] {
-    border: 2px solid #ff00e6;
-    border-radius: 0.25rem;
-} */
 
 .form-container {
     font-family: 'Gemunu-Libre';
